@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Delicious Burgers, Fries, Pizza, and Drinks. Fast and tasty meals delivered to you!" />
+  <title>Fast Bites - Burger, Fries, Pizza & Drinks</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <button class="menu-toggle">☰</button>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li>
+            <a href="#menu">Menu</a>
+            <ul class="dropdown">
+              <li>
+                <a href="#menu">Burgers</a>
+                <ul class="sub-dropdown">
+                  <li><a href="#menu">Classic Cheeseburger</a></li>
+                  <li><a href="#menu">Bacon Burger</a></li>
+                  <li><a href="#menu">Veggie Burger</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#fries">Fries</a>
+                <ul class="sub-dropdown">
+                  <li><a href="#fries">Classic Fries</a></li>
+                  <li><a href="#fries">Cheese Fries</a></li>
+                  <li><a href="#fries">Garlic Fries</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#pizza">Pizza</a>
+                <ul class="sub-dropdown">
+                  <li><a href="#pizza">Margherita Pizza</a></li>
+                  <li><a href="#pizza">Pepperoni Pizza</a></li>
+                  <li><a href="#pizza">Veggie Pizza</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#drinks">Drinks</a>
+                <ul class="sub-dropdown">
+                  <li><a href="#drinks">Soda</a></li>
+                  <li><a href="#drinks">Fruit Juice</a></li>
+                  <li><a href="#drinks">Water</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#specials">Specials</a>
+            <ul class="dropdown">
+              <li><a href="#specials">Combo 1</a></li>
+              <li><a href="#specials">Combo 2</a></li>
+              <li><a href="#specials">Happy Hour</a></li>
+            </ul>
+          </li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      toggleBtn.addEventListener('click', function () {
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
+
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // Navbar appears first
+      document.querySelector("header").classList.add("visible");
+
+      // Fast Vites text with its own effect after 1s
+      setTimeout(() => {
+        document.querySelector(".fast-vites-text").classList.add("reveal-text");
+      }, 1000);
+
+      // Rider appears after 2s
+      setTimeout(() => {
+        document.querySelector(".rider").classList.add("visible");
+      }, 2000);
+
+      // Social icons appear after 3s
+      setTimeout(() => {
+        document.querySelector(".social-icons").classList.add("visible");
+      }, 3000);
+    });
+  </script>
+
+  <!-- Home Section -->
+  <section class="home-section" id="home">
+
+    <div class="banner">
+      <div class="paint-bg">
+        <img src="images/paint.png" alt="" style="z-index: 1;">
+      </div>
+      <div class="food">
+        <img id="foodImage" src="/images/burger.png" alt="Burger" />
+      </div>
+
+      <h1 class="fast-vites-text" style="font-size: 75px;">Fast Vites!</h1>
+
+      <span class="type" style="--n:92; top: -60px; left: -50px; width:100px; text-align: left;">
+        Your go-to place for delicious burgers, crispy
+        fries, hot pizza, and refreshing drinks!
+      </span>
+
+
+      <div class="rider">
+        <div class="free"> <img src="/images/free.png" alt=""> </div>
+        <img src="/images/rider.png" alt="">
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social linkedin"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <script>
+      const images = [
+        '/images/burger.png',
+        '/images/fries.png',
+        '/images/pizza.png',
+        '/images/drinks.png'
+      ];
+
+      let index = 0;
+      const imgElement = document.getElementById('foodImage');
+
+      setInterval(() => {
+        imgElement.style.opacity = 0;
+        setTimeout(() => {
+          index = (index + 1) % images.length;
+          imgElement.src = images[index];
+          imgElement.style.opacity = 1;
+        }, 300); // match fade duration
+      }, 3000);
+    </script>
+
+  </section>
+
+  <section id="menu">
+
+    <h2>Our Menu</h2>
+    <div class="menu-search" id="menuSearch">
+      <div class="search-icon" id="searchToggle">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <input type="text" id="menuSearchInput" placeholder="Search menu items..." />
+    </div>
+
+
+    <div class="menu-grid">
+
+      <!-- Burgers -->
+      <h3>Burgers</h3>
+      <div class="menu-row">
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/cheese.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Classic Cheeseburger - ₱55.00</p>
+        </div>
+
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/Bacon.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Bacon Burger - ₱100.00</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/Veggie.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Veggie Burger - ₱75.50</p>
+        </div>
+      </div>
+
+      <!-- Fries -->
+      <h3 id="fries">Fries</h3>
+      <div class="menu-row">
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/French Fries.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Classic Fries - ₱25.00</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/Cheese f.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Cheese Fries - ₱50.50</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/GarlicF.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Garlic Fries - ₱65.50</p>
+        </div>
+      </div>
+
+      <!-- Pizza -->
+      <h3 id="pizza">Pizza</h3>
+      <div class="menu-row">
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/cheeseP.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Cheese Pizza - ₱250.00</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/peporoni.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Pepperoni Pizza - ₱350.00</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/VeggieP.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Veggie Pizza - ₱180.50</p>
+        </div>
+      </div>
+
+      <!-- Drinks -->
+      <h3 id="drinks">Drinks</h3>
+      <div class="menu-row">
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/softdrinks.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Soda - ₱25.50</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/Juice.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Fruit Juice - ₱30.00</p>
+        </div>
+        <div class="menu-category">
+          <div class="menu-image-box">
+            <img src="/images/water.jpg" alt="Classic Cheeseburger">
+          </div>
+          <p>Water - ₱15.00</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      const searchToggle = document.getElementById("searchToggle");
+      const menuSearch = document.getElementById("menuSearch");
+      const searchInput = document.getElementById("menuSearchInput");
+      const menuItems = document.querySelectorAll(".menu-category");
+
+      searchToggle.addEventListener("click", () => {
+        menuSearch.classList.toggle("active");
+        if (menuSearch.classList.contains("active")) {
+          searchInput.focus();
+        }
+      });
+
+      searchInput.addEventListener("input", () => {
+        const filter = searchInput.value.toLowerCase();
+        menuItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filter) ? "flex" : "none";
+        });
+      });
+    </script>
+
+
+  </section>
+
+  <!-- Specials Section -->
+  <section id="specials">
+    <h2>Specials</h2>
+    <div class="menu-row">
+      <div class="menu-category">
+        <div class="menu-image-box">
+          <img src="/images/combo1.jpg" alt="Classic Cheeseburger">
+        </div>
+        <p>Combo 1: Cheeseburger, Fries, and Drink - ₱150</p>
+      </div>
+      <div class="menu-category">
+        <div class="menu-image-box">
+          <img src="/images/combo2.jpg" alt="Classic Cheeseburger">
+        </div>
+        <p>Combo 2: Pizza and Fries - ₱300.00</p>
+      </div>
+      <div class="menu-category">
+        <div class="menu-image-box">
+          <img src="/images/Fries+.jpg" alt="Classic Cheeseburger">
+        </div>
+        <p>Happy Hour: Buy 1 Get 1 Free on Fries - 3PM to 5PM</p>
+      </div>
+    </div>
+  </section>
+  <!-- About Us Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <!-- Left Column: Animated SVG Background with Heading -->
+      <div class="about-loader-background">
+        <h1 class="about-heading">Fast Vites</h1>
+        <div class="loading_cont">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="loader">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                  result="goo" />
+                <feBlend in2="goo" in="SourceGraphic" result="mix" />
+              </filter>
+              <linearGradient id="MyGradient">
+                <stop offset="5%" stop-color="#40204c" />
+                <stop offset="40%" stop-color="#a3225c" />
+                <stop offset="100%" stop-color="#e24926" />
+              </linearGradient>
+            </defs>
+            <mask id="maska">
+              <g class="blobs">
+                <circle class="blob" cx="440" cy="250" r="30" />
+                <circle class="blob" cx="500" cy="320" r="70" />
+                <circle class="blob" cx="300" cy="390" r="40" />
+                <circle class="blob" cx="380" cy="390" r="80" />
+                <circle class="blob" cx="470" cy="450" r="20" />
+              </g>
+            </mask>
+            <rect x="200" y="200" mask="url(#maska)" fill="url(#MyGradient)" width="400" height="400" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right Column: Text Content -->
+      <div class="about-content">
+        <h2>About Us</h2>
+        <p>Fast Bites is a local family-owned business serving high-quality fast food with a smile. We believe in
+          providing
+          delicious, freshly prepared meals that bring joy to our customers.</p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script>
+      const radius = 8;
+      TweenMax.staggerFromTo('.blob', 4, {
+        cycle: {
+          attr: function (i) {
+            const r = i * 90;
+            return {
+              transform: 'rotate(' + r + ') translate(' + radius + ',0.1) rotate(' + (-r) + ')'
+            }
+          }
+        }
+      }, {
+        cycle: {
+          attr: function (i) {
+            const r = i * 90 + 360;
+            return {
+              transform: 'rotate(' + r + ') translate(' + radius + ',0.1) rotate(' + (-r) + ')'
+            }
+          }
+        },
+        ease: Linear.easeNone,
+        repeat: -1
+      });
+    </script>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have a question or want to place an order? Reach out to us!</p>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Address:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+<style>
+  /* Contact Section Styling */
+#contact {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#contact h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#contact p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#contact label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+#contact textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+#contact button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+  </section>
+
+  <section id="reviews" class="review-section">
+    <h2>Customer Reviews</h2>
+    <div class="review-container">
+
+      <div class="review-card">
+        <img src="/images/user1.jpg" alt="User 1">
+        <h4>Jane D.</h4>
+        <p>"Amazing burgers! Definitely my new favorite place. Fast service too!"</p>
+        <div class="stars">★★★★★</div>
+      </div>
+
+      <div class="review-card">
+        <img src="/images/user2.jpg" alt="User 2">
+        <h4>Mark R.</h4>
+        <p>"Great value for money. The cheese pizza was delicious!"</p>
+        <div class="stars">★★★★☆</div>
+      </div>
+
+      <div class="review-card">
+        <img src="/images/user3.jpg" alt="User 3">
+        <h4>Lisa M.</h4>
+        <p>"Tried the garlic fries and I’m hooked! Will definitely order again."</p>
+        <div class="stars">★★★★★</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Fast Vites | All Rights Reserved</p>
+    <div>
+      <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+    </div>
+  </footer>
+</body>
+
+</html>
